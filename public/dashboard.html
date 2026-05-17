@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Educatoon Perú | Panel</title>
+  <link rel="stylesheet" href="./css/adminlte-roles.css" />
+</head>
+<body class="admin-body">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo small">E</div>
+      <span>Educatoon</span>
+    </div>
+
+    <div class="user-panel">
+      <div class="avatar" id="avatar">ED</div>
+      <div>
+        <strong id="sideNombre">Usuario</strong>
+        <small id="sideRol">Rol</small>
+      </div>
+    </div>
+
+    <nav id="sidebarMenu" class="sidebar-menu"></nav>
+  </aside>
+
+  <div class="content-wrapper">
+    <header class="topbar">
+      <button id="sidebarToggle" class="icon-button">☰</button>
+      <div class="search-box">
+        <input type="text" placeholder="Buscar..." />
+      </div>
+      <div class="topbar-actions">
+        <span id="topEmail">usuario@educatoon.pe</span>
+        <button id="logoutButton" class="btn btn-danger small-btn">Salir</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="page-title">
+        <div>
+          <h1 id="panelTitle">Dashboard</h1>
+          <p id="panelSubtitle">Panel principal de Educatoon Perú.</p>
+        </div>
+        <div class="breadcrumb">Home / Panel</div>
+      </section>
+
+      <section id="cardsContainer" class="info-grid"></section>
+
+      <section id="adminUsersSection" class="card hidden">
+        <header class="card-header blue">
+          <h2>Gestión de usuarios</h2>
+          <span>Disponible para ADMINISTRADOR</span>
+        </header>
+        <div class="card-body">
+          <p class="muted">El administrador puede revisar y modificar información básica de los usuarios registrados.</p>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Rol</th>
+                  <th>Estado</th>
+                  <th>Teléfono</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody id="usuariosTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="roleModulesSection" class="card">
+        <header class="card-header green">
+          <h2>Módulos disponibles</h2>
+          <span>Según tipo de usuario</span>
+        </header>
+        <div class="card-body">
+          <div id="modulesGrid" class="modules-grid"></div>
+        </div>
+      </section>
+
+      <section id="profileSection" class="card">
+        <header class="card-header navy">
+          <h2>Mi perfil</h2>
+        </header>
+        <div class="card-body">
+          <form id="perfilForm" class="admin-form">
+            <div class="form-grid">
+              <div>
+                <label for="perfilNombre">Nombre</label>
+                <input id="perfilNombre" type="text" disabled />
+              </div>
+              <div>
+                <label for="perfilTelefono">Teléfono</label>
+                <input id="perfilTelefono" type="text" />
+              </div>
+              <div>
+                <label for="perfilDireccion">Dirección</label>
+                <input id="perfilDireccion" type="text" />
+              </div>
+              <div>
+                <label for="perfilExtra">Grado / Especialidad / Área</label>
+                <input id="perfilExtra" type="text" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary form-btn">Actualizar mi perfil</button>
+          </form>
+          <div id="perfilMessage" class="alert hidden"></div>
+        </div>
+      </section>
+
+      <section id="passwordSection" class="card hidden">
+        <header class="card-header warning">
+          <h2>Cambiar contraseña</h2>
+          <span>Disponible para estudiante</span>
+        </header>
+        <div class="card-body">
+          <form id="passwordForm" class="admin-form">
+            <div class="form-grid">
+              <div>
+                <label for="passwordActual">Contraseña actual</label>
+                <input id="passwordActual" type="password" />
+              </div>
+              <div>
+                <label for="passwordNuevo">Nueva contraseña</label>
+                <input id="passwordNuevo" type="password" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-warning form-btn">Cambiar contraseña</button>
+          </form>
+          <div id="passwordMessage" class="alert hidden"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./js/dashboard.js"></script>
+</body>
+</html>
