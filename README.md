@@ -1,74 +1,135 @@
-# Educatoon Angular + Node.js + SQLite — v12
+# Educatoon
 
-Demo local de la plataforma académica Educatoon.
+Plataforma académica de demostración construida con Angular, Node.js y SQLite. El proyecto centraliza autenticación, gestión académica y seguimiento por roles para simular un entorno educativo completo.
 
-## Stack
+## Resumen
 
-- Frontend: Angular
-- Backend: Node.js + Express
-- Base de datos local: SQLite
-- Carga de archivos: Multer, carpeta `backend/uploads`
+Educatoon organiza la experiencia en dos capas principales:
 
-## Ejecutar
+- Frontend Angular para la navegación, el login, el registro y el workspace principal.
+- API Node.js/Express con persistencia en SQLite para autenticación, cursos, secciones, matrículas, materiales, tareas, entregas, notas, asesorías y reportes.
+
+El flujo principal es:
+
+```text
+Angular frontend -> API Node.js/Express -> SQLite
+```
+
+## Funcionalidades
+
+- Inicio de sesión y registro de alumnos.
+- Panel principal por rol: alumno, docente, coordinador y administrador.
+- Gestión de cursos, secciones y matrículas.
+- Publicación de materiales por semana y sección.
+- Creación y revisión de tareas con entregas adjuntas.
+- Registro manual de notas y retroalimentación.
+- Foros y canales de comunicación por sección.
+- Calendario académico, asesorías y reportes de progreso.
+- Perfil de usuario y cambio de contraseña.
+
+## Tecnologías
+
+- Angular 18
+- Node.js + Express
+- SQLite
+- JWT para autenticación
+- Multer para carga de archivos
+- bcryptjs para hash de contraseñas
+- morgan y cors para soporte de API
+
+## Requisitos
+
+- Node.js 18 o superior.
+- npm.
+- Navegador moderno.
+
+## Instalación
+
+Instala las dependencias del backend y del frontend por separado:
 
 ```bash
+cd backend
 npm install
-npm run install:all
+
+cd ../frontend
+npm install
+```
+
+## Ejecución en local
+
+Abre dos terminales.
+
+Terminal 1 - API:
+
+```bash
+cd backend
 npm run dev
 ```
 
-Abrir:
+Terminal 2 - Frontend:
+
+```bash
+cd frontend
+npm start
+```
+
+Luego abre:
 
 ```text
 http://localhost:4200
 ```
 
-## Reiniciar base de datos
+La API queda disponible en:
 
-```bash
-npm run reset:db
+```text
+http://localhost:3000
 ```
 
 ## Cuentas demo
 
-Todas usan contraseña `123456`:
+Todas las cuentas usan la contraseña `123456`.
 
 - `alumno@educatoon.pe`
 - `docente@educatoon.pe`
 - `coordinador@educatoon.pe`
 - `admin@educatoon.pe`
 
-## Cambios v12
-
-- El docente puede subir material didáctico por semana del curso.
-- El docente puede crear tareas con instrucciones, fecha de entrega y archivo adjunto opcional.
-- El alumno puede subir su entrega dentro de la tarea correspondiente.
-- El docente puede revisar entregas y registrar notas manualmente por tarea.
-- La pestaña Notas muestra calificaciones y retroalimentación asociadas a cada entrega.
-
 ## Base de datos
 
-La base SQLite se genera en:
+La base SQLite se crea en:
 
 ```text
 backend/data/educatoon.db
 ```
 
-Tablas principales añadidas para esta versión:
+El backend incluye datos semilla para que el entorno de demostración funcione desde el primer arranque.
 
-- `tareas`
-- `entregas_tarea`
+## Reiniciar la base de datos
 
-La arquitectura se mantiene como:
+Para recrear la base con los datos iniciales:
 
-```text
-Angular → API REST Node.js/Express → SQLite
+```bash
+cd backend
+npm run reset
 ```
 
+## Estructura del repositorio
 
-## Actualización v13
+- `frontend/`: aplicación Angular.
+- `backend/`: API REST y base de datos SQLite.
+- `public/`: demo ligera heredada y recursos estáticos.
+- `server.js`: servidor de demostración adicional.
+- `INFORME_TECNICO_EDUCATOON.md`: informe técnico del proyecto.
 
-- La pantalla inicial de la aplicación ahora es el login.
-- Se eliminó la pantalla pública tipo landing.
-- El login y el registro usan una imagen institucional de fondo.
-- La autenticación mantiene el flujo: Angular -> API Node.js/Express -> SQLite.
+## Roles implementados
+
+- ADMINISTRADOR: gestión de usuarios, cursos, secciones, reportes y perfil.
+- DOCENTE: materiales, tareas, entregas, notas, asesorías y perfil.
+- COORDINADOR: aprobación y seguimiento operativo.
+- ALUMNO: acceso a cursos, materiales, progreso, entregas y cambio de contraseña.
+
+## Notas
+
+- El frontend usa proxy hacia la API para simplificar el desarrollo local.
+- La carpeta de cargas de archivos se mantiene en `backend/uploads`.
+- Si trabajas en PowerShell y necesitas ejecutar un binario local, puedes usar `npm.cmd` en lugar de `npm`.

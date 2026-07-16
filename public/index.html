@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Educatoon Perú | Iniciar sesión</title>
+  <link rel="stylesheet" href="./css/adminlte-roles.css" />
+</head>
+<body class="login-body">
+  <main class="login-layout">
+    <section class="login-brand">
+      <div class="brand-row">
+        <div class="brand-logo">E</div>
+        <div>
+          <h1>Educatoon Perú</h1>
+          <p>Plataforma educativa</p>
+        </div>
+      </div>
+      <div class="brand-message">
+        <h2>Bienvenido</h2>
+        <p>Accede a tu panel según tu perfil: administrador, docente o estudiante.</p>
+      </div>
+    </section>
+
+    <section class="login-card">
+      <h2>Iniciar sesión</h2>
+      <p>Ingrese sus credenciales para continuar.</p>
+
+      <form id="loginForm">
+        <label for="email">Correo electrónico</label>
+        <input id="email" type="email" required />
+
+        <label for="password">Contraseña</label>
+        <input id="password" type="password" required />
+
+        <button id="loginButton" class="btn btn-primary" type="submit">Ingresar</button>
+      </form>
+
+      <div id="message" class="alert hidden"></div>
+    </section>
+  </main>
+
+  <script src="./js/login.js"></script>
+</body>
+</html>

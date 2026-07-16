@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "educatoon-angular-node-sqlite",
   "version": "1.0.0",
   "private": true,
@@ -12,5 +13,17 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
+=======
+  "name": "educatoon-soa-roles-adminlte",
+  "version": "1.0.0",
+  "description": "Demo SOA Educatoon Perú con roles y módulos por usuario",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.3"
+>>>>>>> 103412077112910e0e3bde457a906e408f3d4821
   }
 }
