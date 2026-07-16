@@ -1,7 +1,12 @@
 import { Injectable, computed, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
+import { API_BASE_URL } from './api.service';
 import { RegisterPayload, User } from './models';
+
+function apiUrl(path: string) {
+  return `${API_BASE_URL}${path}`;
+}
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -11,7 +16,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.http.post<{ token: string; user: User }>('/api/auth/login', { email, password }).pipe(
+    return this.http.post<{ token: string; user: User }>(apiUrl('/auth/login'), { email, password }).pipe(
       tap((res) => {
         sessionStorage.setItem('educatoon_token', res.token);
         sessionStorage.setItem('educatoon_user', JSON.stringify(res.user));
@@ -21,7 +26,7 @@ export class AuthService {
   }
 
   register(payload: RegisterPayload) {
-    return this.http.post<{ message: string; id: number }>('/api/auth/register', payload);
+    return this.http.post<{ message: string; id: number }>(apiUrl('/auth/register'), payload);
   }
 
   logout() {
