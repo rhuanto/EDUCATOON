@@ -123,10 +123,32 @@ async function main() {
   }
 
   const app = express();
-  app.use(cors({ origin: ['http://localhost:4200', 'http://127.0.0.1:4200'], credentials: true }));
+  const allowedOrigins = new Set([
+    'http://localhost:4200',
+    'http://127.0.0.1:4200',
+    process.env.FRONTEND_ORIGIN
+  ].filter(Boolean));
+
+  app.use(cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.has(origin) || origin.endsWith('.vercel.app')) {
+        return callback(null, true);
+      }
+      return callback(new Error(`Origen no permitido por CORS: ${origin}`));
+    },
+    credentials: true
+  }));
   app.use(express.json());
   app.use('/uploads', express.static(uploadsDir));
   app.use(morgan('dev'));
+
+  app.get('/', (req, res) => {
+    res.json({
+      ok: true,
+      service: 'educatoon-api',
+      message: 'API de Educatoon activa'
+    });
+  });
 
   app.get('/api/health', (req, res) => res.json({ ok: true, service: 'educatoon-api', database: 'sqlite' }));
 
